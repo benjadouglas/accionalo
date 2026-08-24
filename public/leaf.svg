@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-label="Hoja">
+  <rect width="64" height="64" fill="#84e03b"/>
+  <g
+    stroke="#fff"
+    stroke-width="4.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M32 6
+      C49.5 18.5 53.5 31 53.5 41
+      C53.5 51.5 44 57.5 32 57.5
+      C20 57.5 10.5 51.5 10.5 41
+      C10.5 31 14.5 18.5 32 6Z"/>
+    <path d="M32 57.5V16"/>
+    <path d="M32 46 42 36M32 46 22 36"/>
+    <path d="M32 35.5 40.5 27M32 35.5 23.5 27"/>
+    <path d="M32 26 38.5 19.5M32 26 25.5 19.5"/>
+  </g>
+</svg>

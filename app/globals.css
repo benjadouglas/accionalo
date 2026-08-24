@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0d0d0d;
+  --paper: #f7f6f3;
+
+  --c-ochre: #eab43c;
+  --c-magenta: #f32bd4;
+  --c-sky: #55b9e9;
+  --c-indigo: #2b2178;
+  --c-lime: #a6e24e;
+  --c-coral: #f2734d;
+  --c-pink: #ed2e8f;
+  --c-teal: #45d6ce;
+  --c-orange: #f2a944;
+  --c-purple: #b32beb;
+  --c-mint: #6bf2a4;
+  --c-acid: #d8e43c;
+  --c-bone: #f5f4f2;
+}
+
+@theme inline {
+  --font-sans: var(--font-archivo), sans-serif;
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-ochre: var(--c-ochre);
+  --color-magenta: var(--c-magenta);
+  --color-sky: var(--c-sky);
+  --color-indigo: var(--c-indigo);
+  --color-lime: var(--c-lime);
+  --color-coral: var(--c-coral);
+  --color-pink: var(--c-pink);
+  --color-teal: var(--c-teal);
+  --color-orange: var(--c-orange);
+  --color-purple: var(--c-purple);
+  --color-mint: var(--c-mint);
+  --color-acid: var(--c-acid);
+  --color-bone: var(--c-bone);
+}
+
+body {
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-archivo), sans-serif;
+}
+
+::selection {
+  background: var(--c-magenta);
+  color: #fff;
+}
+
+/* Tile → page shared-element morph */
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-group(.morph) {
+  animation-duration: 380ms;
+  animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+::view-transition-image-pair(.morph) {
+  animation-name: via-blur;
+  animation-duration: 380ms;
+}
+
+@keyframes via-blur {
+  30% {
+    filter: blur(3px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
