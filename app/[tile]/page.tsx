@@ -16,20 +16,18 @@ export default async function TilePage({ params }: PageProps<"/[tile]">) {
   const { id, name, bg, label, icon, Icon } = data;
 
   return (
-    <main className="relative flex min-h-screen flex-col overflow-hidden p-2">
-      <ViewTransition name={`tile-${id}`} share="morph" default="none">
-        <div className={`${bg} pointer-events-none absolute inset-0`} aria-hidden />
-      </ViewTransition>
+    <ViewTransition name={`tile-${id}`} share="morph" default="none">
+      <main
+        className={`${bg} relative flex min-h-screen flex-col overflow-hidden p-2`}
+      >
+        <Icon
+          className={`${icon} pointer-events-none absolute -bottom-24 -right-24 h-[28rem] w-[28rem] opacity-40`}
+          aria-hidden
+        />
 
-      <ViewTransition enter="tile-copy" exit="tile-copy" default="none">
         <div
           className={`${label === "sr-only" ? "text-white" : label} relative flex flex-1 flex-col`}
         >
-          <Icon
-            className={`${icon} pointer-events-none absolute -bottom-24 -right-24 h-[28rem] w-[28rem] opacity-40`}
-            aria-hidden
-          />
-
           <Link
             href="/"
             className="mt-2 ml-3 self-start text-sm font-semibold tracking-tight opacity-70 transition-opacity duration-200 hover:opacity-100"
@@ -48,7 +46,7 @@ export default async function TilePage({ params }: PageProps<"/[tile]">) {
             )}
           </div>
         </div>
-      </ViewTransition>
-    </main>
+      </main>
+    </ViewTransition>
   );
 }
