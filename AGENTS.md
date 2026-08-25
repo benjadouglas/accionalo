@@ -12,6 +12,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 Este proyecto es para que la mamá del dueño trabaje en el contenido y la app. Ella **no es técnica**: no usa Git, GitHub, ramas, pull requests, Vercel, ni Cloud Agents.
 
+Cuando dice que arrances o empiezes o comienzes, lo que quiere decir es que corras el proyecto en un dev server o en algun lado (antes verifica si ya esta corriendo, no lo arranques de nuevo) y se lo muestres, si tienes un integrated browser usa eso, sino pasale el link de la pagina (accionalo.vercel.dev) para que vea los cambios que vas haciendo
+
 ## Responsabilidad del agente
 
 Vos (el agente de Cursor) sos responsable de **todo** el flujo técnico. Ella solo describe lo que quiere. Nunca le pidas que:
