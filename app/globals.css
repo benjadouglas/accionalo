@@ -49,24 +49,55 @@ body {
   color: #fff;
 }
 
-/* Tile → page shared-element morph */
+/* Tile → page: expand the color block, fade the rest */
 ::view-transition {
   pointer-events: none;
 }
 
 ::view-transition-group(.morph) {
-  animation-duration: 380ms;
-  animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+  z-index: 1;
+  overflow: clip;
+  animation-duration: 480ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 ::view-transition-image-pair(.morph) {
-  animation-name: via-blur;
-  animation-duration: 380ms;
+  isolation: isolate;
 }
 
-@keyframes via-blur {
-  30% {
-    filter: blur(3px);
+::view-transition-old(.morph) {
+  animation: 140ms ease-out both fade-out;
+}
+
+::view-transition-new(.morph) {
+  animation: none;
+}
+
+::view-transition-old(root) {
+  animation: 280ms ease-out both fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 320ms cubic-bezier(0.22, 1, 0.36, 1) 80ms both fade-in;
+}
+
+::view-transition-old(.tile-copy) {
+  animation: 140ms ease-out both fade-out;
+}
+
+::view-transition-new(.tile-copy) {
+  animation: 360ms cubic-bezier(0.22, 1, 0.36, 1) 140ms both fade-in;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
 }
 
