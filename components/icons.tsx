@@ -12,7 +12,10 @@ const base = {
 export function IconPlus(props: P) {
   return (
     <svg {...base} {...props}>
-      <path d="M20 8h8v12h12v8H28v12h-8V28H8v-8h12V8z" fill="currentColor" />
+      <g stroke="currentColor" strokeWidth="8" strokeLinecap="round">
+        <path d="M24 8v32" />
+        <path d="M8 24h32" />
+      </g>
     </svg>
   );
 }
@@ -137,12 +140,6 @@ export function IconCube(props: P) {
         stroke="currentColor"
         strokeWidth="3"
         strokeLinejoin="round"
-      />
-      <path
-        d="M24 10v15"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeDasharray="3 4"
       />
     </svg>
   );
