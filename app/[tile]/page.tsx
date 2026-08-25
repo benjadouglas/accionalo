@@ -25,9 +25,7 @@ export default async function TilePage({ params }: PageProps<"/[tile]">) {
           aria-hidden
         />
 
-        <div
-          className={`${label === "sr-only" ? "text-white" : label} relative flex flex-1 flex-col`}
-        >
+        <div className={`${label === "sr-only" ? "text-white" : label} relative flex flex-1 flex-col`}>
           <Link
             href="/"
             className="mt-2 ml-3 self-start text-sm font-semibold tracking-tight opacity-70 transition-opacity duration-200 hover:opacity-100"
