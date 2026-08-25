@@ -109,7 +109,7 @@ export const TILES: Tile[] = [
     bg: "bg-purple",
     label: "text-[#3f0b57]",
     icon: "text-[#3f0b57]",
-    iconPos: "bottom-3 right-3 h-52 w-52",
+    iconPos: "bottom-3 left-1/2 h-52 w-52 -translate-x-1/2",
     Icon: IconPlay,
   },
   {

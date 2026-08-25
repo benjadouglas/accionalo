@@ -53,12 +53,13 @@ export function IconWifi(props: P) {
 export function IconMoon(props: P) {
   return (
     <svg {...base} {...props}>
-      <g transform="translate(24 24) scale(0.78) translate(-24 -24)">
-        <path
-          d="M30 5a20 20 0 1 0 12 36A23 23 0 0 1 30 5z"
-          fill="currentColor"
-        />
-      </g>
+      <path
+        d="M31.5 7.5C20.6 8.1 12 16.1 12 25.5S19.7 41 29.6 40.5C24.4 36.7 21.5 31 21.5 24.7S25 11.9 31.5 7.5Z"
+        stroke="currentColor"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
@@ -86,10 +87,10 @@ export function IconLeaf(props: P) {
 export function IconX(props: P) {
   return (
     <svg {...base} {...props}>
-      <path
-        d="M14.3 8.6 24 18.3l9.7-9.7 5.7 5.7L29.7 24l9.7 9.7-5.7 5.7L24 29.7l-9.7 9.7-5.7-5.7L18.3 24 8.6 14.3l5.7-5.7z"
-        fill="currentColor"
-      />
+      <g stroke="currentColor" strokeWidth="8" strokeLinecap="round">
+        <path d="m13 13 22 22" />
+        <path d="m35 13-22 22" />
+      </g>
     </svg>
   );
 }
@@ -130,15 +131,15 @@ export function IconCube(props: P) {
   return (
     <svg {...base} {...props}>
       <path
-        d="M9 17.5 24 10l15 7.5v15L24 40 9 32.5v-15z"
+        d="M7.5 16.5 24 7l16.5 9.5v19L24 45 7.5 35.5v-19z"
         stroke="currentColor"
-        strokeWidth="3"
+        strokeWidth="3.4"
         strokeLinejoin="round"
       />
       <path
-        d="M9 17.5 24 25l15-7.5M24 25v15"
+        d="M7.5 16.5 24 26l16.5-9.5M24 26v19"
         stroke="currentColor"
-        strokeWidth="3"
+        strokeWidth="3.4"
         strokeLinejoin="round"
       />
     </svg>
@@ -148,7 +149,13 @@ export function IconCube(props: P) {
 export function IconPlay(props: P) {
   return (
     <svg {...base} {...props}>
-      <path d="M16 9.5 40 24 16 38.5v-29z" fill="currentColor" />
+      <path
+        d="M17.5 10.5C16.4 9.8 15 10.6 15 12v24c0 1.4 1.4 2.2 2.5 1.5l20-12c1.2-.7 1.2-2.3 0-3l-20-12Z"
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
