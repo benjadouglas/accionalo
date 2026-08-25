@@ -94,7 +94,7 @@ export const TILES: Tile[] = [
   },
   {
     id: "capsularte",
-    name: "cápsulARTE",
+    name: "CAPSULarte",
     area: "md:[grid-area:7/11/12/20]",
     bg: "bg-teal",
     label: "text-[#0c4f4a]",

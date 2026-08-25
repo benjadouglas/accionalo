@@ -2,6 +2,7 @@ import { ViewTransition } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TILES } from "../tiles";
+import { TILE_CONTENT } from "./content";
 
 export function generateStaticParams() {
   return TILES.map(({ id }) => ({ tile: id }));
@@ -32,13 +33,15 @@ export default async function TilePage({ params }: PageProps<"/[tile]">) {
             ← Volver
           </Link>
 
-          <div className="flex flex-1 flex-col justify-center px-5 pb-16 md:px-12">
-            <h1 className="text-4xl font-semibold tracking-tight md:text-6xl">
+          <div className="flex flex-1 flex-col justify-center px-5 py-16 md:px-12">
+            <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
               {name}
             </h1>
-            <p className="mt-4 max-w-prose text-lg opacity-80">
-              Contenido próximamente.
-            </p>
+            {TILE_CONTENT[id] ?? (
+              <p className="mt-4 max-w-prose text-lg opacity-80">
+                Contenido próximamente.
+              </p>
+            )}
           </div>
         </div>
       </main>
