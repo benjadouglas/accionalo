@@ -54,10 +54,9 @@ export function IconMoon(props: P) {
   return (
     <svg {...base} {...props}>
       <path
-        d="M31.5 7.5C20.6 8.1 12 16.1 12 25.5S19.7 41 29.6 40.5C24.4 36.7 21.5 31 21.5 24.7S25 11.9 31.5 7.5Z"
+        d="M36.25 6.27A18.5 18.5 0 1 0 36.25 41.73 18.5 18.5 0 0 1 36.25 6.27Z"
         stroke="currentColor"
-        strokeWidth="3.5"
-        strokeLinecap="round"
+        strokeWidth="3.4"
         strokeLinejoin="round"
       />
     </svg>

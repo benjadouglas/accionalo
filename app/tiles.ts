@@ -38,7 +38,7 @@ export const TILES: Tile[] = [
     label: "text-sky/90",
     icon: "text-sky/70",
     iconPos:
-      "bottom-5 left-1/2 h-auto w-[min(11rem,calc(100%-1.75rem))] origin-bottom aspect-square -translate-x-1/2",
+      "bottom-3 left-1/2 h-auto w-[min(14rem,calc(100%-0.35rem))] origin-bottom aspect-square -translate-x-1/2",
     Icon: IconMoon,
   },
   {
