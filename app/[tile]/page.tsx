@@ -21,16 +21,26 @@ export default async function TilePage({ params }: PageProps<"/[tile]">) {
   const textColor = label === "sr-only" ? "text-white" : label;
 
   return (
-    <ViewTransition name={`tile-${id}`} share="morph" default="none">
-      <main
-        className={`${bg} relative min-h-screen overflow-hidden p-2`}
-      >
-        <Icon
-          className={`${icon} pointer-events-none fixed -bottom-24 -right-24 h-[28rem] w-[28rem] opacity-20`}
-          aria-hidden
-        />
+    // The page content fades in after the panel has grown; the panel itself is
+    // a named shared element, so it is excluded from this snapshot.
+    <ViewTransition enter="page" exit="page" default="none">
+      <main className="relative min-h-screen overflow-hidden p-2">
+        {/* The tapped tile grows into this card (same flat color, same corners). */}
+        <ViewTransition name={`panel-${id}`} share="morph" default="none">
+          <div className={`${bg} fixed inset-2 -z-10 rounded-lg`} aria-hidden />
+        </ViewTransition>
 
-        <div className={`${textColor} relative mx-auto w-full max-w-7xl`}>
+        <div>
+          <div
+            className="pointer-events-none fixed inset-2 -z-10 overflow-hidden rounded-lg"
+            aria-hidden
+          >
+            <Icon
+              className={`${icon} absolute -bottom-24 -right-24 h-[28rem] w-[28rem] opacity-20`}
+            />
+          </div>
+
+          <div className={`${textColor} relative mx-auto w-full max-w-7xl`}>
           <Link
             href="/"
             className="mt-2 ml-3 inline-block text-sm font-semibold tracking-tight opacity-70 transition-opacity duration-200 hover:opacity-100"
@@ -120,6 +130,7 @@ export default async function TilePage({ params }: PageProps<"/[tile]">) {
                 </div>
               </section>
             )}
+          </div>
           </div>
         </div>
       </main>

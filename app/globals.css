@@ -49,32 +49,108 @@ body {
   color: #fff;
 }
 
-/* Tile → page shared-element morph */
+/* ------------------------------------------------------------------ */
+/* Motion tokens                                                       */
+/* ------------------------------------------------------------------ */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-morph: 300ms; /* the colored panel growing / shrinking */
+  --duration-enter: 200ms; /* page content arriving */
+  --duration-exit: 120ms; /* anything leaving */
+  --radius-tile: 0.5rem; /* matches rounded-lg on the tiles */
+}
+
+/* Tile hover: real pointers only, transform only */
+@media (hover: hover) and (pointer: fine) {
+  .tile-hover {
+    transition: transform 200ms ease;
+  }
+  .group:hover .tile-hover {
+    transform: scale(1.06);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Tile → page (and back)                                              */
+/*                                                                     */
+/* One object moves: the tapped tile's flat colored panel grows into   */
+/* the page card. Everything else either leaves fast (grid, page text) */
+/* or arrives after the panel has settled (page text).                 */
+/* ------------------------------------------------------------------ */
 ::view-transition {
   pointer-events: none;
 }
 
+/* Root (the rest of the grid / the white page frame): leaves fast, new one is just there */
+::view-transition-old(root) {
+  animation: var(--duration-exit) var(--ease-out) both fade-out;
+}
+::view-transition-new(root) {
+  animation: none;
+}
+
+/* Panel: both snapshots are the same flat color, so there is nothing to
+   crossfade. Only the group moves. The snapshot is stretched to always cover
+   the group, whatever the tile's aspect ratio, and the group keeps the tile's
+   rounded corners the whole way. */
 ::view-transition-group(.morph) {
-  animation-duration: 380ms;
-  animation-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
+  animation-duration: var(--duration-morph);
+  animation-timing-function: var(--ease-in-out);
+  border-radius: var(--radius-tile);
+  overflow: clip;
 }
-
 ::view-transition-image-pair(.morph) {
-  animation-name: via-blur;
-  animation-duration: 380ms;
+  isolation: auto;
+}
+::view-transition-old(.morph) {
+  display: none;
+}
+::view-transition-new(.morph) {
+  animation: none;
+  mix-blend-mode: normal;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: fill;
 }
 
-@keyframes via-blur {
-  30% {
-    filter: blur(3px);
+/* Page content: waits for the panel to be mostly there, then fades and rises in.
+   On the way back it leaves first, fast, so the panel shrinks empty. */
+::view-transition-new(.page) {
+  animation: var(--duration-enter) var(--ease-out) calc(var(--duration-morph) / 2)
+    both fade-rise-in;
+}
+::view-transition-old(.page) {
+  animation: var(--duration-exit) var(--ease-out) both fade-out;
+}
+
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
 }
 
+/* Reduced motion: keep the fades, drop the movement */
 @media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(*),
-  ::view-transition-new(*),
-  ::view-transition-group(*) {
-    animation-duration: 0s !important;
-    animation-delay: 0s !important;
+  ::view-transition-group(.morph) {
+    animation-duration: 0s;
+  }
+  ::view-transition-new(.page) {
+    animation: var(--duration-enter) var(--ease-out) both fade-in;
+  }
+  .group:hover .tile-hover {
+    transform: none;
   }
 }
