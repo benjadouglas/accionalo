@@ -169,10 +169,17 @@ const jugarte: CategoryContent = {
   gallery: [],
 };
 
+const otros: CategoryContent = {
+  ...standardCategory("otros"),
+  intro: [
+    "El arte para nosotras es un proceso en equipo de investigación y desarrollo creativo de proyectos junto a otros profesionales donde se diluyen las fronteras entre las diferentes disciplinas.",
+  ],
+};
+
 const categories: Record<string, CategoryContent> = {
   museos: standardCategory("museos"),
   nosotros,
-  otros: standardCategory("otros"),
+  otros,
   publico: standardCategory("publico"),
   xotros: standardCategory("xotros"),
   accionline: standardCategory("accionline"),
