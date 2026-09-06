@@ -176,6 +176,14 @@ const otros: CategoryContent = {
   ],
 };
 
+const capsularte: CategoryContent = {
+  ...standardCategory("capsularte"),
+  intro: [
+    "Generamos múltiples vivencias relacionadas al arte en un cruce de métodos tradicionales con nuevas tecnologías en pos de desarrollar la creatividad.",
+    "“El pensamiento creativo consiste en la formación de nuevas combinaciones de elementos asociativos. Cuanto más remotas son dichas combinaciones más creativo es el proceso o la solución” Mednick (1964)",
+  ],
+};
+
 const categories: Record<string, CategoryContent> = {
   museos: standardCategory("museos"),
   nosotros,
@@ -183,7 +191,7 @@ const categories: Record<string, CategoryContent> = {
   publico: standardCategory("publico"),
   xotros: standardCategory("xotros"),
   accionline: standardCategory("accionline"),
-  capsularte: standardCategory("capsularte"),
+  capsularte,
   jugarte,
   extension: standardCategory("extension"),
 };

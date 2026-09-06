@@ -24,7 +24,7 @@ export default async function TilePage({ params }: PageProps<"/[tile]">) {
     // The page content fades in after the panel has grown; the panel itself is
     // a named shared element, so it is excluded from this snapshot.
     <ViewTransition enter="page" exit="page" default="none">
-      <main className="relative min-h-screen overflow-hidden p-2">
+      <main className="relative min-h-screen overflow-x-hidden p-2">
         {/* The tapped tile grows into this card (same flat color, same corners). */}
         <ViewTransition name={`panel-${id}`} share="morph" default="none">
           <div className={`${bg} fixed inset-2 -z-10 rounded-lg`} aria-hidden />
@@ -54,9 +54,16 @@ export default async function TilePage({ params }: PageProps<"/[tile]">) {
             </h1>
 
             <div className="mt-8 max-w-4xl space-y-3 text-lg leading-relaxed md:text-xl">
-              {content.intro.map((line, index) => (
-                <p key={`${line}-${index}`}>{line}</p>
-              ))}
+              {content.intro.map((line, index) => {
+                const isQuote = /^[“"]/.test(line);
+                return isQuote ? (
+                  <blockquote key={`${line}-${index}`} className="pt-5 opacity-80">
+                    {line}
+                  </blockquote>
+                ) : (
+                  <p key={`${line}-${index}`}>{line}</p>
+                );
+              })}
             </div>
 
             {content.gallery.length > 0 && (
